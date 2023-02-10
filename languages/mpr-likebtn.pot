@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-10 13:31+0100\n"
+"PO-Revision-Date: 2023-02-10 13:31+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Eazy Po 0.9.5.3\n"
+
+msgid "Rating"
+msgstr ""
+
+msgid "View Log"
+msgstr ""
+
+msgid "Manually"
+msgstr ""
+
+msgid "Rating Log"
+msgstr ""
+
+msgid "MPRating"
+msgstr ""
+
+msgid "Access Denied"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "Post"
+msgstr ""
+
+msgid "Page From"
+msgstr ""
+
+msgid "User Name"
+msgstr ""
+
+msgid "User IP (hash)"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Voting"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "No data"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+#, php-format
+msgid "Rating: %s"
+msgstr ""
+
+msgid "Enter the number of likes you wish to add"
+msgstr ""
+
+msgid "and update the post"
+msgstr ""
+
+msgid "You can enter negative number to decrease post rating."
+msgstr ""
+
+msgid "Thank you, vote accepted!"
+msgstr ""
+
+msgid "You have left the max. number of votes"
+msgstr ""
+
+#, php-format
+msgid "Invalid Post ID (#%s)."
+msgstr ""
+
+msgid "You can't vote for this entry"
+msgstr ""
+
+msgid "You cannot vote for this entry"
+msgstr ""
+
+msgid "MPR Plugin Settings"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Enable for:"
+msgstr ""
+
+msgid "Allow to vote:"
+msgstr ""
+
+msgid "All users by IP"
+msgstr ""
+
+msgid "Logged only"
+msgstr ""
+
+msgid "Max. number of votes:"
+msgstr ""
+
+msgid "Allowed voting count from non-logged or non-admin role user"
+msgstr ""
+
+msgid "Display:"
+msgstr ""
+
+msgid ""
+"To display the rating manually you can use [mpr-button] shortcode or "
+"mpr_button(['id' => 0, 'disabled' => false, 'return' => true ]) function"
+msgstr ""
+
+msgid "Before Content"
+msgstr ""
+
+msgid "After Content"
+msgstr ""
+
+msgid "Clear all"
+msgstr ""
+
+msgid "Clear all settings and log when uninstalling plugin"
+msgstr ""
+
+msgid "for: "
+msgstr ""
+
+msgid "Update calculated rating"
+msgstr ""
+
+msgid "Post total rating:"
+msgstr ""
+
+msgid "Back to Log for all posts"
+msgstr ""
+
+msgid "No data to display"
+msgstr ""
+
+msgid "&laquo;"
+msgstr ""
+
+msgid "&raquo;"
+msgstr ""

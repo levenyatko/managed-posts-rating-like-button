@@ -1,0 +1,56 @@
+.mpr-logs--wrapper h1{
+    margin-bottom: 20px;
+ }
+
+ .mpr-logs--wrapper table th {
+     padding: 8px 5px;
+     border-bottom: 1px solid #ccd0d4;
+     background-color: #ffffff;
+}
+
+
+.mpr-logs--wrapper table td.item-like{
+    background-color: #68de7c9e;
+}
+
+.mpr-logs--wrapper table td.item-dislike{
+    background-color: #ffabafc7;
+}
+.wpr-log-pagination .pagination-links>*{
+    min-width: 30px;
+    min-height: 30px;
+    margin: 0;
+    padding: 2px;
+    font-size: 16px;
+    line-height: 1.625;
+    text-align: center;
+    
+    display: inline-block;
+    
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+}
+.wpr-log-pagination .pagination-links>span{
+    color: #626262;
+    border-color: #ddd;
+    background: #f7f7f7;
+    box-shadow: none;
+    text-shadow: 0 1px 0 #fff;
+    cursor: default;
+}
+
+.wpr-log-pagination .pagination-links>a{
+    color: #0071a1;
+    border-color: #0071a1;
+    background: #f3f5f6;
+}
+.wpr-actions .dashicons-no {
+    color: #b32d2e;
+}
+
+.wpr-actions .dashicons-filter {
+    font-size: 16px;
+    vertical-align: middle;
+
+}

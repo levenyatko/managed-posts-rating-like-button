@@ -1,0 +1,15 @@
+{
+  "name": "mpr-likebtn-pannel",
+  "version": "1.0.0",
+  "description": "Adds a panel to Gutenberg editor",
+  "private": true,
+  "scripts": {
+    "start": "wp-scripts start assets/src/metabox.js --output-path=assets/build\""
+  },
+  "dependencies": {
+    "@wordpress/i18n": "^4.9.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^24.6.0"
+  }
+}

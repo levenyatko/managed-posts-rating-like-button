@@ -1,0 +1,61 @@
+.mpr-button {
+    position: relative;
+}
+
+.mpr-button:hover {
+    cursor: pointer;
+}
+
+.mpr-tooltip {
+    content: "";
+    top: -50%;
+    left: 50%;
+    background-color: #5eb761;
+    box-shadow: 0 5px 30px rgba(79,195,247,.2);
+    position: absolute;
+    transform: translate(-50%,-100%);
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    padding: 15px;
+    border-radius: 5px;
+    display: none;
+}
+
+.mpr-tooltip.mpr-error{
+    background-color: #b75e5e;
+}
+
+.mpr-tooltip.mpr-display {
+    display: initial;
+}
+
+.mpr-tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%,50%) rotate(45deg);
+    background-color: inherit;
+    border-radius: 0 0 3px 0;
+}
+
+.mpr-tooltip p{
+    color: #edf9fe;
+    font-weight: 600;
+    font-size: .875rem;
+    text-align: center;
+    white-space: inherit;
+    margin: 0;
+    line-height: 150%;
+}
+
+.mpr-button svg{
+    fill: none;
+}
+
+.mpr-button.mpr-voted svg{
+    fill: #5EB761;
+}
