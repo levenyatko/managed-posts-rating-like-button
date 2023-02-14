@@ -93,9 +93,6 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
         {
             register_activation_hook( __FILE__, [ $this, 'plugin_activation' ] );
             register_deactivation_hook( __FILE__, [ $this, 'plugin_deactivation' ] );
-
-           // add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
-
         }
 
         public function plugin_activation()
@@ -120,15 +117,6 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
 	            delete_option("mpr_general_section");
             }
 
-        }
-
-        public function load_textdomain()
-        {
-            load_plugin_textdomain(
-                'mpr-likebtn',
-                false,
-                dirname( plugin_basename( __FILE__ ) ) . '/languages'
-            );
         }
 
     }
