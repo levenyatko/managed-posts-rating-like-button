@@ -19,7 +19,7 @@ class MPR_Logs_Data
 	public function __construct($per_page = 20)
     {
         global $wpdb;
-        $this->logs_table_name = $wpdb->prefix . '_mpr_rating_log';
+        $this->logs_table_name = $wpdb->prefix . 'mpr_rating_log';
 
         $this->rows_per_page = $per_page;
 	}

@@ -3,7 +3,7 @@
  * Plugin Name:       Managed posts rating ★ Like button
  * Plugin URI:        https://github.com/levenyatko/mpr-likebtn
  * Description:       Adds rating to any post type, allows to manage user likes.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Daria Levchenko
  * Author URI:        https://github.com/levenyatko
  * Text Domain:       mpr-likebtn
