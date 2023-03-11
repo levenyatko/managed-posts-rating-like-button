@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Logs_Data') ) :
+
 class MPR_Logs_Data
 {
     private $logs_table_name;
@@ -188,3 +190,5 @@ class MPR_Logs_Data
 
     }
 }
+
+endif;

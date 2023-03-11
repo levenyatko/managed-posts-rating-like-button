@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Rest_Api') ) :
+
 class MPR_Rest_Api
 {
     public function __construct()
@@ -138,3 +140,5 @@ class MPR_Rest_Api
         return rest_ensure_response($result);
     }
 }
+
+endif;

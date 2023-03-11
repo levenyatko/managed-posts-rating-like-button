@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Button_Display') ) :
+
 class MPR_Button_Display
 {
 	public function __construct()
@@ -63,3 +65,4 @@ class MPR_Button_Display
     }
 
 }
+endif;

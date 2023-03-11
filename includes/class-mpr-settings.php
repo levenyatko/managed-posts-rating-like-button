@@ -3,6 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Settings') ) :
+
 class MPR_Settings
 {
     public function __construct()
@@ -274,3 +276,5 @@ class MPR_Settings
     }
 
 }
+
+endif;

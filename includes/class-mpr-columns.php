@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Columns') ) :
+
 class MPR_Columns
 {
     public function __construct()
@@ -86,3 +88,5 @@ class MPR_Columns
     }
 
 }
+
+endif;

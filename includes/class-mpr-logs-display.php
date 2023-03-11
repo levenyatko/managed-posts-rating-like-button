@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Logs_Display') ) :
+
 class MPR_Logs_Display
 {
 
@@ -178,3 +180,5 @@ class MPR_Logs_Display
     }
 
 }
+
+endif;

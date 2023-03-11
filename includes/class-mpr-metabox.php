@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+if ( ! class_exists('MPR_Metabox') ) :
+
 class MPR_Metabox
 {
     public function __construct()
@@ -146,3 +148,5 @@ class MPR_Metabox
     }
 
 }
+
+endif;
