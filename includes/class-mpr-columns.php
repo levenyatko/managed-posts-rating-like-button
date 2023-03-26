@@ -35,7 +35,7 @@ class MPR_Columns
 
 	public function add_rating_column($columns)
     {
-		$columns['mpr_column'] = __( 'Rating', 'mpr-likebtn' );
+		$columns['mpr_column'] = esc_html__( 'Rating', 'mpr-likebtn' );
 
 		return $columns;
 	}
