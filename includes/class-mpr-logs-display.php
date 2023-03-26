@@ -60,7 +60,8 @@ class MPR_Logs_Display
 	public function display_log()
     {
 		if ( ! current_user_can( 'manage_mpr_log' ) ) {
-			wp_die( __( 'Access Denied', 'mpr-likebtn' ) );
+            //'show_in_rest' => true,
+			wp_die( esc_html__( 'Access Denied', 'mpr-likebtn' ) );
 		}
 
         if ( isset($_GET['mpr-delete-row']) ) {
@@ -119,7 +120,7 @@ class MPR_Logs_Display
             'value' => $row_data['rating_id']
         ];
         $result['post'] = [
-                'value' => '<a href="' . get_edit_post_link($row_data['post_id']) . '" target="_blank">' . $row_data['post_title'] . '</a>'
+                'value' => '<a href="' . get_edit_post_link($row_data['post_id']) . '" target="_blank">' . esc_html($row_data['post_title']) . '</a>'
             ];
 
         if ( 0 > $row_data['ref_post_id'] ) {
@@ -128,13 +129,13 @@ class MPR_Logs_Display
             ];
         } else {
             $result['ref'] = [
-                'value' => '<a href="' . get_the_permalink($row_data['ref_post_id']) . '" target="_blank">' . $row_data['ref_post_title'] . '</a>'
+                'value' => '<a href="' . get_the_permalink($row_data['ref_post_id']) . '" target="_blank">' . esc_html($row_data['ref_post_title']) . '</a>'
             ];
         }
 
         if ( $user ) {
             $result['user'] = [
-                'value' => '<a href="' . get_edit_profile_url($row_data['user_id']) . '">' .  $user->display_name . '</a>'
+                'value' => '<a href="' . get_edit_profile_url($row_data['user_id']) . '">' .  esc_html($user->display_name) . '</a>'
             ];
         } else {
             $result['user'] = [
@@ -165,10 +166,14 @@ class MPR_Logs_Display
             ];
         }
 
-        $actions_string = '<a href="' . mpr_get_log_link($row_data['post_id']) . '" title="' . __('Filter', 'mpr-likebtn') . '"><div class="dashicons dashicons-filter" aria-hidden="true"></div></a>';
-        $actions_string .= '<a href="' . $delete_url . '" title="' . __('Delete', 'mpr-likebtn') . '"><div class="dashicons dashicons-no" aria-hidden="true"></div></a>';
+        $actions_string = '<a href="' . esc_url( mpr_get_log_link($row_data['post_id']) ) . '"';
+        $actions_string .= ' title="' . esc_attr( __('Filter', 'mpr-likebtn') ). '">';
+        $actions_string .= '<div class="dashicons dashicons-filter" aria-hidden="true"></div></a>';
 
-
+        $actions_string .= '<a href="' . esc_url($delete_url) . '"';
+        $actions_string .= ' title="' . esc_attr( __('Delete', 'mpr-likebtn') ) . '">';
+        $actions_string .= '<div class="dashicons dashicons-no" aria-hidden="true"></div></a>';
+        
         $result['actions'] = [
             'attrs' => [
                 'class' => 'wpr-actions',

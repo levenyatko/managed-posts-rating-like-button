@@ -180,7 +180,7 @@ function mpr_button($atts)
         return $html;
     }
 
-    echo $html;
+    echo apply_filters('the_mpr_button_shortcode', $html);
 }
 
 function mpr_get_button_template($post_id, $user_voted, $disabled = false)

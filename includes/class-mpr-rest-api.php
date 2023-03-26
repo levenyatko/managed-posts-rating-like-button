@@ -91,12 +91,12 @@ class MPR_Rest_Api
                     $result['new_rating'] = $new_rating;
 
                     $result['success'] = true;
-                    $result['message'] = __('Thank you, vote accepted!', 'mpr-likebtn');
+                    $result['message'] = esc_html__('Thank you, vote accepted!', 'mpr-likebtn');
 
                 } else { // user can not vote many times - unvote post
 
                     $result['success'] = false;
-                    $result['message'] = __('You have left the max. number of votes', 'mpr-likebtn');
+                    $result['message'] = esc_html__('You have left the max. number of votes', 'mpr-likebtn');
                 }
 
             } else {
@@ -123,11 +123,11 @@ class MPR_Rest_Api
             // If Valid Post Then We Vote It
             if ($post && !wp_is_post_revision($post) && mpr_is_post_type_supported($post->post_type)) {
 
-                    $new_rating = mpr_process_post_voting( $post_id, (int) $request['rate'], -1 );
-                    $result['new_rating'] = $new_rating;
+                $new_rating = mpr_process_post_voting( $post_id, (int) $request['rate'], -1 );
+                $result['new_rating'] = $new_rating;
 
-                    $result['success'] = true;
-                    $result['message'] = __('Thank you, vote accepted!', 'mpr-likebtn');
+                $result['success'] = true;
+                $result['message'] = esc_html__('Thank you, vote accepted!', 'mpr-likebtn');
 
             } else {
                 $result['message'] = sprintf(esc_html__('Invalid Post ID (#%s).', 'mpr-likebtn'), $post_id);

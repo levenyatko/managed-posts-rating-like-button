@@ -48,13 +48,17 @@ class MPR_Columns
 
 			case 'mpr_column' :
 				$v = get_post_meta($post->ID, 'mpr_score',1);
-				echo intval($v);
 
-				echo '<div class="row-actions">';
-                echo '<span class="0">';
-                echo '<a href="' .  mpr_get_log_link($post->ID) . '" >' . __('View Log', 'mpr-likebtn') . '</a>';
-                echo '</span>';
-                echo '</div>';
+				echo esc_html( intval($v) );
+                ?>
+                <div class="row-actions">
+                    <span class="0">
+                        <a href="<?php echo esc_url( mpr_get_log_link($post->ID) ); ?>" >
+                            <?php esc_html_e('View Log', 'mpr-likebtn'); ?>
+                        </a>
+                    </span>
+                </div>
+                <?php
 
 				break;
 

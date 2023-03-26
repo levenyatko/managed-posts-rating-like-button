@@ -41,7 +41,7 @@ class MPR_Settings
     public function display_settings_page()
     {
         if ( ! current_user_can( 'manage_mpr_log' ) ) {
-            wp_die( __( 'Access Denied', 'mpr-likebtn' ) );
+            wp_die( esc_html__( 'Access Denied', 'mpr-likebtn' ) );
         }
 
         include_once MPR_PLUGIN_DIR . 'partials/admin/settings-general.php';
@@ -111,7 +111,7 @@ class MPR_Settings
                 ],
                 [
                     'name'    => 'display_type',
-                    'label'   =>  __('Display:', 'mpr-likebtn'),
+                    'label'   => __('Display:', 'mpr-likebtn'),
                     'desc'    => __("To display the rating manually you can use [mpr-button] shortcode or mpr_button(['id' => 0, 'disabled' => false, 'return' => true ]) function", 'mpr-likebtn'),
                     'type'    => 'select',
                     'options' => [
@@ -135,81 +135,107 @@ class MPR_Settings
 
     function callback_multicheck( $args )
     {
-        $value = mpr_get_option( $args['id'], $args['section'], $args['default'] );
-
-        $html  = '<fieldset>';
-        $html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="" />', $args['section'], $args['id'] );
-
-        $option_count = count( $args['options'] );
-
-        foreach ( $args['options'] as $key => $label ) {
-            $checked = isset( $value[$key] ) ? $value[$key] : '0';
-
-            if ( $option_count < 5 ) {
-                $html .= '<div>';
-            } else {
-                $html .= '<div style="display: inline-block; margin-right: 15px;">';
-            }
-            $html    .= sprintf( '<label for="mpr-%1$s-%2$s-%3$s">', $args['section'], $args['id'], $key );
-            $html    .= sprintf( '<input type="checkbox" class="checkbox" id="mpr-%1$s-%2$s-%3$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
-            $html    .= sprintf( '%1$s</label>',  $label );
-            $html .= '</div>';
-        }
-
-        if ( ! empty( $args['desc'] ) ) {
-            $html .= sprintf( '<p class="description">%s</p>', $args['desc'] );
-        }
-
-        $html .= '</fieldset>';
-
-        echo $html;
+        $field_id   = sprintf( 'mpr-%1$s-%2$s', $args['section'], $args['id'] );
+        $field_name = sprintf( '%1$s[%2$s]', $args['section'], $args['id']);
+        $value      = mpr_get_option( $args['id'], $args['section'], $args['default'] );
+        ?>
+            <fieldset>
+                <?php
+                    foreach ( $args['options'] as $key => $label ) {
+                        $item_checked = isset( $value[$key] ) ? $value[$key] : '0';
+                        $item_id = $field_id . '-' . $key;
+                        $item_name = $field_name . '[' . $key . ']';
+                        ?>
+                            <label for="<?php echo esc_attr($item_id) ?>">
+                                <input type="checkbox"
+                                       class="checkbox"
+                                       id="<?php echo esc_attr($item_id) ?>"
+                                       name="<?php echo esc_attr($item_name) ?>"
+                                       value="<?php echo esc_attr($key) ?>"
+                                    <?php checked( $item_checked, $key ); ?>
+                                />
+                                <?php echo esc_html($label); ?>
+                            </label>
+                        <?php
+                    }
+                    $this->show_field_description($args);
+                ?>
+            </fieldset>
+        <?php
     }
 
     function callback_select( $args )
     {
-        $value = mpr_get_option( $args['id'], $args['section'], $args['default'] );
+        $field_id   = sprintf( 'mpr-%1$s-%2$s', $args['section'], $args['id'] );
+        $field_name = sprintf( '%1$s[%2$s]', $args['section'], $args['id']);
+        $value      = mpr_get_option( $args['id'], $args['section'], $args['default'] );
 
-        $html  = sprintf( '<select name="%1$s[%2$s]">', $args['section'], $args['id'] );
+        ?>
+            <select name="<?php echo esc_attr($field_name) ?>" id="<?php echo esc_attr($field_id) ?>" autocomplete="off">
+                <?php
+                    foreach ( $args['options'] as $key => $label ) {
+                        ?>
+                        <option value="<?php echo esc_attr($key) ?>" <?php selected( $value, $key ); ?> />
+                            <?php echo esc_html($label); ?>
+                        </option>
+                        <?php
+                    }
+                ?>
+            </select>
+        <?php
 
-        foreach ( $args['options'] as $key => $label ) {
-            $html    .= sprintf( '<option value="%1$s" %2$s />%3$s</option>', $key, selected( $value, $key, false ), $label );
-        }
+        $this->show_field_description($args);
 
-        $html .= '</select>';
-
-        if ( ! empty( $args['desc'] ) ) {
-            $html .= sprintf( '<p class="description">%s</p>', $args['desc'] );
-        }
-
-        echo $html;
     }
 
     function callback_checkbox( $args )
     {
-
-        $value = esc_attr( mpr_get_option( $args['id'], $args['section'], $args['default'] ) );
-        $html  = '<fieldset>';
-        $html  .= sprintf( '<label for="mpr-%1$s-%2$s">', $args['section'], $args['id'] );
-        $html  .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="no" />', $args['section'], $args['id'] );
-        $html  .= sprintf( '<input type="checkbox" class="checkbox" id="mpr-%1$s-%2$s" name="%1$s[%2$s]" value="yes" %3$s />', $args['section'], $args['id'], checked( $value, 'yes', false ) );
-        $html  .= sprintf( '%1$s</label>', $args['desc'] );
-        $html  .= '</fieldset>';
-
-        echo $html;
+        $field_id   = sprintf( 'mpr-%1$s-%2$s', $args['section'], $args['id'] );
+        $field_name = sprintf( '%1$s[%2$s]', $args['section'], $args['id']);
+        $value      = mpr_get_option( $args['id'], $args['section'], $args['default'] );
+        ?>
+        <fieldset>
+            <label for="<?php echo esc_attr($field_id) ?>">
+                <input type="checkbox"
+                       class="checkbox"
+                       id="<?php echo esc_attr($field_id) ?>"
+                       name="<?php echo esc_attr($field_name) ?>"
+                       value="yes"
+                    <?php checked( $value, 'yes' ); ?>
+                />
+                <?php echo esc_html($args['desc']); ?>
+            </label>
+            <?php $this->show_field_description($args); ?>
+        </fieldset>
+        <?php
     }
 
     function callback_number( $args )
     {
-        $value = esc_attr( mpr_get_option( $args['id'], $args['section'], $args['default'] ) );
-        $html  = sprintf( '<label for="mpr-%1$s-%2$s">', $args['section'], $args['id'] );
-        $html  .= sprintf( '<input type="number" name="%1$s[%2$s]" value="%3$s" />', $args['section'], $args['id'], $value);
-        $html  .= '</label>';
+        $field_id   = sprintf( 'mpr-%1$s-%2$s', $args['section'], $args['id'] );
+        $field_name = sprintf( '%1$s[%2$s]', $args['section'], $args['id']);
+        $value      = mpr_get_option( $args['id'], $args['section'], $args['default'] );
 
-        if ( ! empty( $args['desc'] ) ) {
-            $html .= sprintf( '<p class="description">%s</p>', $args['desc'] );
+        ?>
+        <label for="<?php echo esc_attr($field_id) ?>">
+           <input type="number"
+                  id="<?php echo esc_attr($field_id) ?>"
+                  name="<?php echo esc_attr($field_name) ?>"
+                  value="<?php echo esc_attr($value) ?>"/>
+        </label>
+        <?php
+
+        $this->show_field_description($args);
+
+    }
+
+    private function show_field_description($field_args)
+    {
+        if ( ! empty( $field_args['desc'] ) ) {
+            ?>
+            <p class="description"><?php echo esc_html($field_args['desc']); ?></p>
+            <?php
         }
-
-        echo $html;
     }
 
     function settings_admin_init()
@@ -224,11 +250,12 @@ class MPR_Settings
             }
 
             if ( isset($section['desc']) && !empty($section['desc']) ) {
-                $section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
+                $section['desc'] = '<p>' .$section['desc'] . '</p>';
                 $callback = function() use ( $section ) {
-                    echo str_replace( '"', '\"', $section['desc'] );
+                    $desc = str_replace( '"', '\"', $section['desc'] );
+                    echo wp_kses_post( $desc );
                 };
-            } else if ( isset( $section['callback'] ) ) {
+            } elseif ( isset( $section['callback'] ) ) {
                 $callback = $section['callback'];
             } else {
                 $callback = null;

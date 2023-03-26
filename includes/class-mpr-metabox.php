@@ -48,7 +48,6 @@ class MPR_Metabox
             ]);
 
             register_post_meta($screen, 'add_rating_to_post', [
-                //'show_in_rest' => true,
                 'type' => 'string',
                 'single' => true,
                 'sanitize_callback' => 'absint'
@@ -90,15 +89,15 @@ class MPR_Metabox
 
         ?>
         <div class="form-wrap">
-            <h4><?php echo sprintf( __('Rating: %s', 'mpr-likebtn'), $post_score ); ?></h4>
+            <h4><?php echo esc_html( sprintf( __('Rating: %s', 'mpr-likebtn'), $post_score ) ); ?></h4>
             <hr>
             <div class="form-field">
-                <p><?php _e('Enter the number of likes you wish to add', 'mpr-likebtn') ?></p>
+                <p><?php esc_html_e('Enter the number of likes you wish to add', 'mpr-likebtn') ?></p>
                 <input type="number" id="add_rating_to_post" name="add_rating_to_post" value="0" />
-                <p><?php _e('and update the post', 'mpr-likebtn') ?><br></p>
-                <p><?php _e('You can enter negative number to decrease post rating.', 'mpr-likebtn') ?></p>
+                <p><?php esc_html_e('and update the post', 'mpr-likebtn') ?><br></p>
+                <p><?php esc_html_e('You can enter negative number to decrease post rating.', 'mpr-likebtn') ?></p>
             </div>
-            <a href="<?php echo $fix_log_link; ?>"><?php _e('View Log', 'mpr-likebtn') ?></a>
+            <a href="<?php echo esc_url($fix_log_link); ?>"><?php esc_html_e('View Log', 'mpr-likebtn') ?></a>
         </div>
         <?php
     }
