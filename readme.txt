@@ -75,6 +75,10 @@ Create an `mpr` folder in your theme and copy the `partials/front` folder into i
 
 *apply_filters('mpr_is_user_can_vote', $is_vote_allowed);*
 
+**mpr_allowed_settings_cell_tags** - allowed tags to display in the logs table cell.
+
+*$allowed_cell_tags = apply_filters('mpr_allowed_settings_cell_tags', $allowed_cell_tags);*
+
 === Actions ===
 
 **mpr_after_post_voted** - is fired after a new voting record is added to the log
