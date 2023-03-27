@@ -3,7 +3,7 @@ Contributors: levenyatko
 Tags: rating, voting, rating system, star rating
 Requires at least: 4.9
 Tested up to: 6.1.1
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -87,9 +87,14 @@ Create an `mpr` folder in your theme and copy the `partials/front` folder into i
 
 == Changelog ==
 
+= 1.1.0 =
+* Added escaping for echoed variables
+* Fixed frontend CSS
+* Fixed frontend JS multiple AJAX calls
+
 = 1.0.1 =
 * Removed unused code
-* Added
+* Added readme.txt file
 
 = 1.0 =
 * Initial release
