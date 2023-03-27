@@ -1,5 +1,9 @@
 .mpr-button {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .mpr-button:hover {
@@ -9,7 +13,7 @@
 .mpr-tooltip {
     content: "";
     top: -50%;
-    left: 50%;
+    left: 28px;
     background-color: #5eb761;
     box-shadow: 0 5px 30px rgba(79,195,247,.2);
     position: absolute;
@@ -50,6 +54,23 @@
     white-space: inherit;
     margin: 0;
     line-height: 150%;
+}
+
+.mpr-button-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.mpr-button-row .mpr-votes-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    margin-left: 3px;
 }
 
 .mpr-button svg{
