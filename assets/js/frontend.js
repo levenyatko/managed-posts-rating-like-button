@@ -6,12 +6,18 @@ if ( 0 < buttons.length ) {
 
       button.addEventListener("click", function () {
 
+         if ( 1 === Number(button.dataset.clicked) ) {
+            return;
+         }
+
+         button.setAttribute('data-clicked', 1);
+
          xhr.open("POST", mpr_vars.apibase + '/v1/rate', true);
          xhr.responseType = 'json';
          xhr.setRequestHeader('X-WP-Nonce', mpr_vars.nonce);
 
          xhr.onreadystatechange = () => {
-            button.text = xhr.status;
+
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 
                const tooltip = this.querySelector('.mpr-tooltip');
@@ -30,6 +36,8 @@ if ( 0 < buttons.length ) {
                   tooltip.classList.remove('mpr-display');
                   tooltip.classList.remove('mpr-error');
                   tooltip.classList.remove('mpr-success');
+
+                  button.setAttribute('data-clicked', 0);
                }, 1500);
 
             }
