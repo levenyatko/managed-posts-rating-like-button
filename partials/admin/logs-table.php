@@ -98,38 +98,26 @@
             ?>
         </table>
         <?php
-        $page_links = paginate_links( [
-            'base'      => add_query_arg( 'pagenum', '%#%' ),
-            'format'    => '',
-            'prev_text' => __( '&laquo;'),
-            'next_text' => __( '&raquo;'),
-            'total'     => $num_of_pages,
-            'current'   => $pagenum
-        ] );
-
-        if ( $page_links ) {
-            ?>
-            <div class="tablenav wpr-log-pagination">
-                <div class="tablenav-pages">
-                    <span class="pagination-links">
-                        <?php
-                            echo wp_kses($page_links, [
-                                'a'  => [
-                                    'href'  => [],
-                                    'title' => [],
-                                    'class' => []
-                                ],
-                                'span' => [
-                                    'class' => [],
-                                    'aria-current' => []
-                                ]
-                            ]);
-                        ?>
-                    </span>
+            if ( $num_of_pages > 0 ) {
+                ?>
+                <div class="tablenav wpr-log-pagination">
+                    <div class="tablenav-pages">
+                        <div class="pagination-links">
+                            <?php
+                                echo paginate_links( [
+                                    'base'      => add_query_arg( 'pagenum', '%#%' ),
+                                    'format'    => '',
+                                    'prev_text' => __( '&laquo;'),
+                                    'next_text' => __( '&raquo;'),
+                                    'total'     => $num_of_pages,
+                                    'current'   => $pagenum
+                                ] );
+                            ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <?php
-        }
+                <?php
+            }
         ?>
     </div>
 </div>
