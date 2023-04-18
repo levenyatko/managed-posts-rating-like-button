@@ -102,6 +102,13 @@ function mpr_check_possibility_to_vote($post_id)
 {
     $is_vote_allowed = false;
 
+    $post = get_post($post_id);
+    $display = mpr_is_btn_display_enabled( $post );
+
+    if ( ! $display ) {
+        return apply_filters('mpr_is_user_can_vote_unsupported', $is_vote_allowed);
+    }
+
     if ( current_user_can('mpr_freely_likes') ) {
         $is_vote_allowed = true;
     } else {
@@ -138,6 +145,19 @@ function mpr_is_post_type_supported($post_type)
     return in_array($post_type, $screens);
 }
 
+function mpr_is_btn_display_enabled($post)
+{
+    $is_post_type_supported = mpr_is_post_type_supported( $post->post_type );
+
+    if ( ! $is_post_type_supported ) {
+        $button_display = mpr_get_option( 'disabled_btn_display', 'mpr_general_section', 'hide' );
+        if ( 'show_enabled' != $button_display ) {
+            return false;
+        }
+    }
+    return  true;
+}
+
 function mpr_search_template_path($file_name, $folder = 'front')
 {
     $file_path = $folder . '/' . $file_name . '.php';
@@ -161,8 +181,22 @@ function mpr_button($atts)
         $ratings_id = $post->ID;
     }
 
+    $voted_post = get_post($ratings_id);
+    $is_post_type_supported = mpr_is_post_type_supported( $voted_post->post_type );
+
+    if ( ! $is_post_type_supported ) {
+        $button_display = mpr_get_option( 'disabled_btn_display', 'mpr_general_section', 'hide' );
+        if ( 'hide' == $button_display ) {
+            echo apply_filters('the_mpr_button_shortcode_hidden', '');
+            return;
+        } elseif ( 'show_disabled' == $button_display ) {
+            $attributes['disabled'] = true;
+        }
+    }
+
     // if user voted the post
     $user_voted = mpr_current_user_voted($ratings_id);
+
 
     // if we allowed voting
     if ( $attributes['disabled'] ) {

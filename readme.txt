@@ -2,7 +2,7 @@
 Contributors: levenyatko
 Tags: rating, voting, rating system, star rating
 Requires at least: 4.9
-Tested up to: 6.1.1
+Tested up to: 6.2
 Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -75,6 +75,14 @@ Create an `mpr` folder in your theme and copy the `partials/front` folder into i
 
 *apply_filters('mpr_is_user_can_vote', $is_vote_allowed);*
 
+**mpr_is_user_can_vote_unsupported** - if you need change current user caps to voting for unsupported post types when voting button is displayed active
+
+*apply_filters('mpr_is_user_can_vote_unsupported', $is_vote_allowed);*
+
+**the_mpr_button_shortcode_hidden** - filter to change displayed content for hidden voting button
+
+*apply_filters('the_mpr_button_shortcode_hidden', '');*
+
 **mpr_allowed_settings_cell_tags** - allowed tags to display in the logs table cell.
 
 *$allowed_cell_tags = apply_filters('mpr_allowed_settings_cell_tags', $allowed_cell_tags);*
@@ -86,6 +94,12 @@ Create an `mpr` folder in your theme and copy the `partials/front` folder into i
 *do_action( 'mpr_after_post_voted', $post_id, $rating_value, $parent_id, $log_row_id );*
 
 == Changelog ==
+
+= 1.2.0 =
+* Added display settings for voting button on unsupported post types
+* Added mpr_is_user_can_vote_unsupported filter to change if user can vote for post with unsupported post type.
+* Added the_mpr_button_shortcode_hidden filter to show notification for disabled shortcode.
+* Compatibility with WordPress 6.2.
 
 = 1.1.0 =
 * Added escaping for echoed variables

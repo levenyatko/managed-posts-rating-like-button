@@ -122,6 +122,18 @@ class MPR_Settings
                     'default' => 'manually',
                 ],
                 [
+                    'name'    => 'disabled_btn_display',
+                    'label'   => __('Display if disabled:', 'mpr-likebtn'),
+                    'desc'    => __("Do we need to show voting button for disabled post types (for manually added buttons only)?", 'mpr-likebtn'),
+                    'type'    => 'select',
+                    'options' => [
+                        'hide'          => __('Hide', 'mpr-likebtn'),
+                        'show_disabled' => __('Show disabled', 'mpr-likebtn'),
+                        'show_enabled'  => __('Show', 'mpr-likebtn'),
+                    ],
+                    'default' => 'hide',
+                ],
+                [
                     'name'    => 'clear_all_settings',
                     'label'   => __( 'Clear all', 'mpr-likebtn' ),
                     'desc'    => __( 'Clear all settings and log when uninstalling plugin', 'mpr-likebtn' ),

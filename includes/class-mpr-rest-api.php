@@ -72,8 +72,10 @@ class MPR_Rest_Api
 
             $post = get_post($post_id);
 
+            $display = mpr_is_btn_display_enabled( $post );
+
             // If Valid Post Then We Vote It
-            if ($post && !wp_is_post_revision($post) && mpr_is_post_type_supported($post->post_type)) {
+            if ($post && !wp_is_post_revision($post) && $display ) {
 
                 if ( current_user_can('mpr_freely_likes') ) {
                     $result['max_user_rating'] = -1; // unlimited
