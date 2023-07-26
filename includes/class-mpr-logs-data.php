@@ -10,20 +10,13 @@ class MPR_Logs_Data
 {
     private $logs_table_name;
 
-	/*
-	* Count rows to display in the log page
-	*/
-	public $rows_per_page;
-
 	/**
 	 * Initialize the class and set its properties.
 	 */
-	public function __construct($per_page = 20)
+	public function __construct()
     {
         global $wpdb;
         $this->logs_table_name = $wpdb->prefix . 'mpr_rating_log';
-
-        $this->rows_per_page = $per_page;
 	}
 
 	public function create_table()
@@ -56,11 +49,10 @@ class MPR_Logs_Data
         $wpdb->query( "DROP TABLE IF EXISTS {$this->logs_table_name}" );
     }
 
-    public function get_data($page = 1, $post_id = 0)
+    public function get_data($page = 1, $per_page = 10, $post_id = 0)
     {
         global $wpdb;
 
-        $per_page = $this->rows_per_page;
         $offset = ($page-1)*$per_page;
 
         $query_params = [];
@@ -78,7 +70,7 @@ class MPR_Logs_Data
 
         $sql = $wpdb->prepare($select, $query_params);
 
-        $r = $wpdb->get_results($sql);
+        $r = $wpdb->get_results($sql, ARRAY_A);
 
         if ( ''  !== $wpdb->last_error ) {
             $wpdb->print_error();

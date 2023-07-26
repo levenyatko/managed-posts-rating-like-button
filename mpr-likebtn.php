@@ -56,7 +56,8 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
                 self::$instance->frontend = new MPR_Button_Display();
 
                 if ( ! ( defined( 'SHORTINIT' ) && SHORTINIT ) ) {
-                    self::$instance->logs_display = new MPR_Logs_Display( self::$instance->logs_data );
+
+                    self::$instance->logs = new MPR_Logs( self::$instance->logs_data );
                     self::$instance->settings = new MPR_Settings();
 
                     self::$instance->columns = new MPR_Columns();
@@ -82,7 +83,8 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-settings.php';
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-columns.php';
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-data.php';
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-display.php';
+            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-table.php';
+            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs.php';
 
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-metabox.php';
 
