@@ -46,6 +46,13 @@ class MPR_Button_Display
         }
 
         if ( 'manual' != $display_type && is_singular($screens) && is_main_query() ) {
+
+            if ( function_exists('is_woocommerce') ) {
+                if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page()  ) {
+                    return $content;
+                }
+            }
+
             global $post;
 
             $args = [
