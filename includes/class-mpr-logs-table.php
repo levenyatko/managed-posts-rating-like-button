@@ -25,10 +25,9 @@
             $this->logsData = $logsData;
         }
 
-        public function get_columns()
+        public static function get_columns_list()
         {
             return [
-                'cb'         => '<input type="checkbox" />',
                 'id'         => __('ID', 'mpr-likebtn'),
                 'liked_post' => __('Post', 'mpr-likebtn'),
                 'rating'     => __('Rating', 'mpr-likebtn'),
@@ -36,6 +35,11 @@
                 'user'       => __('User', 'mpr-likebtn'),
                 'date'       => __('Date', 'mpr-likebtn'),
             ];
+        }
+
+        function get_columns()
+        {
+            return array_merge(['cb' => '<input type="checkbox" />'], self::get_columns_list());
         }
 
         function column_default ( $item, $column_name )
@@ -116,7 +120,7 @@
             $per_page = $this->get_items_per_page('mpr_rows_per_page', 10);
             $columns = $this->get_columns();
 
-            $hidden = [];
+            $hidden = get_hidden_columns( $this->screen );
             $sortable = $this->get_sortable_columns();
 
             $this->_column_headers = [ $columns, $hidden, $sortable ];

@@ -40,7 +40,7 @@ class MPR_Logs
 	 */
 	public function add_settings_page()
     {
-        $hook = add_menu_page(
+        add_menu_page(
 					__( 'Rating Log', 'mpr-likebtn' ),
 					__( 'MPRating', 'mpr-likebtn' ),
 					'manage_mpr_log',
@@ -48,8 +48,6 @@ class MPR_Logs
 					[$this, 'display_log'],
 					'dashicons-star-filled'
 				);
-
-        // add_action("load-$hook", [$this, 'add_table_options'] );
 
 	}
 
@@ -75,15 +73,6 @@ class MPR_Logs
 
         include_once MPR_PLUGIN_DIR . 'partials/admin/logs-table.php';
 	}
-
-    public function add_table_options()
-    {
-        add_screen_option('per_page', [
-            'label'   => __('Number of items per page:'),
-            'default' => 10,
-            'option'  => 'mpr_rows_per_page'
-        ]);
-    }
 
 }
 
