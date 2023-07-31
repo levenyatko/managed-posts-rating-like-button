@@ -54,19 +54,10 @@ class MPR_Logs
 	public function display_log()
     {
 		if ( ! current_user_can( 'manage_mpr_log' ) ) {
-            //'show_in_rest' => true,
 			wp_die( esc_html__( 'Access Denied', 'mpr-likebtn' ) );
 		}
 
         $filter_post_id = isset( $_GET['filter_post_id'] ) ? absint( $_GET['filter_post_id'] ) : 0;
-
-	    if ( isset($_GET['mpr-log-action'])) {
-            if ( 'recalculate' == $_GET['mpr-log-action'] && ! empty( $filter_post_id ) ) {
-                $this->logsData->update_calculated_rating($filter_post_id);
-            } elseif ( 'delete-row' == $_GET['mpr-log-action'] && ! empty( $_GET['row_id'] ) ) {
-                $this->logsData->delete_row( (int)$_GET['row_id'] );
-            }
-	    }
 
         $table = new MPR_Logs_Table();
         $table->set_logs_data( $this->logsData );

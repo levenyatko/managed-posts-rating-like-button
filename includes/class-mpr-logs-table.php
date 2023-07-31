@@ -59,9 +59,9 @@
         function column_liked_post( $item )
         {
             $url_delete_args = [
-                'page'             => sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ),
-                'mpr-log-action'   => 'delete-row',
-                'row_id'           => absint( $item['id'] ),
+                'page'      => sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ),
+                'action'    => 'mpr-delete-row',
+                'row_id'    => absint( $item['id'] ),
             ];
 
             $delete_url = wp_nonce_url( add_query_arg( $url_delete_args ), 'mpr_delete_row_nonce' );
@@ -107,7 +107,7 @@
         public function get_bulk_actions()
         {
             return [
-                'delete'       => 'Delete',
+                'mpr_delete_rows' => 'Delete',
             ];
         }
 
@@ -191,6 +191,67 @@
                 'data'          => $table_data,
             ];
 
+        }
+
+        public function process_bulk_action()
+        {
+            $redirect_url = admin_url('/admin.php?page=mpr-plugin-page');
+
+            $action = $this->current_action();
+
+            if ( 'mpr-delete-row' ===  $action ) {
+                $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
+                if ( ! wp_verify_nonce( $nonce, 'mpr_delete_row_nonce' ) ) {
+                    $redirect_url = add_query_arg(['mpr-error' => 'nonce'], $redirect_url);
+                    wp_redirect( esc_url_raw($redirect_url) );
+                    exit;
+                }
+
+                $r = 0;
+                $row_to_delete = absint( $_GET['row_id'] );
+                if ( $row_to_delete ) {
+                    $r = $this->logsData->delete_row($row_to_delete);
+                }
+
+                if ( $r ) {
+                    $redirect_url = add_query_arg(['mpr-success' => 'row-delete'], $redirect_url);
+                } else {
+                    $redirect_url = add_query_arg(['mpr-error' => 'row-delete'], $redirect_url);
+                }
+
+                wp_redirect( esc_url_raw($redirect_url) );
+                exit;
+
+            } elseif ( 'mpr-recalculate' == $action && ! empty( $_GET['filter_post_id'] ) ) {
+
+                $filter_post_id = isset( $_GET['filter_post_id'] ) ? absint( $_GET['filter_post_id'] ) : 0;
+                $this->logsData->update_calculated_rating($filter_post_id);
+
+                $redirect_url = add_query_arg([
+                    'mpr-success'    => 'recalculate',
+                    'filter_post_id' => $filter_post_id
+                ], $redirect_url);
+                wp_redirect( esc_url_raw($redirect_url) );
+                exit;
+            }
+
+            // If the delete bulk action is triggered
+            if ( ( ! empty( $_POST['action'] ) && $_POST['action'] == 'mpr_delete_rows' )
+                 || ( ! empty( $_POST['action2'] ) && $_POST['action2'] == 'mpr_delete_rows' )
+            ) {
+
+                $delete_ids = esc_sql( $_POST['mpr-stat-item'] );
+
+                // loop over the array of record IDs and delete them
+                foreach ( $delete_ids as $id ) {
+                    $this->logsData->delete_row( $id );
+                }
+
+                $redirect_url = add_query_arg(['mpr-success' => 'rows-delete'], $redirect_url);
+                wp_redirect( esc_url_raw($redirect_url) );
+                exit;
+            }
         }
 
     }

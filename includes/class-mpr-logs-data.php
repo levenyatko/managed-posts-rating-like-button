@@ -149,6 +149,10 @@ class MPR_Logs_Data
 
 	public function update_calculated_rating($post_id)
 	{
+        if ( empty($post_id) ) {
+            return;
+        }
+
 		global $wpdb;
 
 		$select = "SELECT sum(rating) as c FROM {$this->logs_table_name} WHERE post_id =%d";

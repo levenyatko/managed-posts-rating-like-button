@@ -50,21 +50,22 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
                 self::$instance->define_constants();
 
                 self::$instance->load_dependencies();
+                self::$instance->load_admin_dependencies();
 
                 self::$instance->logs_data = new MPR_Logs_Data();
                 self::$instance->front_api = new MPR_Rest_Api();
                 self::$instance->frontend = new MPR_Button_Display();
 
-                if ( ! ( defined( 'SHORTINIT' ) && SHORTINIT ) ) {
+                if ( is_admin() ) {
+                    self::$instance->columns = new MPR_Columns();
+                    self::$instance->metabox = new MPR_Metabox();
 
-                    self::$instance->logs = new MPR_Logs( self::$instance->logs_data );
+                    self::$instance->logs_page = new MPR_Logs( self::$instance->logs_data );
                     MPR_Logs_Screen_Settings::init_hooks();
 
                     self::$instance->settings = new MPR_Settings();
 
-                    self::$instance->columns = new MPR_Columns();
-
-                    self::$instance->metabox = new MPR_Metabox();
+                    MPR_Notices::init_hooks();
                 }
 
             }
@@ -82,18 +83,27 @@ if ( ! class_exists( 'MPR_Like_Btn' ) ) {
         {
             require_once MPR_PLUGIN_DIR . 'includes/functions.php';
 
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-settings.php';
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-columns.php';
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-data.php';
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-screen-settings.php';
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-table.php';
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs.php';
-
-            require_once MPR_PLUGIN_DIR . 'includes/class-mpr-metabox.php';
 
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-rest-api.php';
             require_once MPR_PLUGIN_DIR . 'includes/class-mpr-button-display.php';
+        }
 
+        private function load_admin_dependencies()
+        {
+            if ( is_admin() ) {
+
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-columns.php';
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-metabox.php';
+
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs.php';
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-screen-settings.php';
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-logs-table.php';
+
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-settings.php';
+
+                require_once MPR_PLUGIN_DIR . 'includes/class-mpr-notices.php';
+            }
         }
 
         public function __construct()

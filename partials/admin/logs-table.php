@@ -18,7 +18,7 @@
                 $page_title .= get_the_title($filter_post_id);
 
                 $update_url = add_query_arg([
-                    'mpr-log-action' => 'recalculate'
+                    'action' => 'mpr-recalculate'
                 ]);
 
                 $post_total = get_post_meta($filter_post_id, 'mpr_score',1);;
@@ -38,9 +38,12 @@
                 </p>
                 <?php
             }
-
-            $table->prepare_items();
-            $table->display();
         ?>
+        <form method="post" id="posts-filter">
+            <?php
+                $table->prepare_items();
+                $table->display();
+            ?>
+        </form>
     </div>
 </div>

@@ -14,7 +14,6 @@ class MPR_Metabox
     public function __construct()
     {
         $this->define_hooks();
-
     }
 
     private function define_hooks()
