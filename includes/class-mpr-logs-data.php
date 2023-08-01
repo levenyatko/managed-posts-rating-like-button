@@ -147,20 +147,42 @@ class MPR_Logs_Data
         return 0;
     }
 
+    public function get_post_rating($post_id, $date_start = '', $date_end = '')
+    {
+        if ( empty($post_id) ) {
+            return 0;
+        }
+
+        global $wpdb;
+
+        $select = "SELECT sum(rating) as c FROM {$this->logs_table_name} WHERE post_id =%d";
+        $params = [ (int)$post_id ];
+
+        if ( ! empty($date_start) ) {
+            $select .= ' AND timestamp >= %s';
+            $params[] = $date_start;
+        }
+
+        if ( ! empty($date_end) ) {
+            $select .= ' AND timestamp <= %s';
+            $params[] = $date_end;
+        }
+
+        $query = $wpdb->prepare($select, $params);
+        $rating = $wpdb->get_var($query);
+
+        return (int)$rating;
+    }
+
 	public function update_calculated_rating($post_id)
 	{
         if ( empty($post_id) ) {
             return;
         }
 
-		global $wpdb;
+		$rating = $this->get_post_rating($post_id);
 
-		$select = "SELECT sum(rating) as c FROM {$this->logs_table_name} WHERE post_id =%d";
-		$query = $wpdb->prepare($select, (int)$post_id);
-
-		$r = $wpdb->get_var($query);
-
-		update_post_meta($post_id, 'mpr_score', $r);
+		update_post_meta($post_id, 'mpr_score', $rating);
 
 	}
 

@@ -239,3 +239,58 @@ function mpr_get_button_template($post_id, $user_voted, $disabled = false)
 
     return $rating_html;
 }
+
+/**
+* @param $post_id
+* @param array $args {
+*     The array to filter post voting. All arguments are optional and may be empty.
+*
+*     @type date $start  The start date from which the post rating is calculated.
+*     @type date $end    The end date to which the post rating is calculated.
+* }
+*
+* @return int
+*/
+function mpr_get_post_rating($post_id, $args = [])
+{
+    $rating = 0;
+
+    $plugin = MPR_Like_Btn();
+
+    if ( ! isset($plugin->logs_data) ) {
+        return $rating;
+    }
+
+    $post_obj = get_post($post_id);
+    if ( empty($post_obj) ) {
+        return $rating;
+    }
+
+    // get post rating on specific date/datetime
+    if ( ! empty($args['start']) || ! empty($args['end']) ) {
+
+        $date_start = '';
+        $date_end = '';
+
+        if ( ! empty($args['start'])) {
+            $date = new DateTime($args['start']);
+            if ( ! empty($date)) {
+                $date_start = $date->format('Y-m-d H:i:s');
+            }
+        }
+
+        if ( ! empty($args['end'])) {
+            $date = new DateTime($args['end']);
+            if ( ! empty($date)) {
+                $date_end = $date->format('Y-m-d H:i:s');
+            }
+        }
+
+        $rating = $plugin->logs_data->get_post_rating($post_id, $date_start, $date_end);
+
+    } else {
+        $rating = (int)get_post_meta($post_id, 'mpr_score', 1);
+    }
+
+    return $rating;
+}
