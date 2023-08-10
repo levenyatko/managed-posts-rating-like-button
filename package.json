@@ -4,7 +4,8 @@
   "description": "Adds a panel to Gutenberg editor",
   "private": true,
   "scripts": {
-    "start": "wp-scripts start assets/src/metabox.js --output-path=assets/build\""
+    "start": "wp-scripts start assets/src/metabox.js --output-path=assets/build\"",
+    "build": "wp-scripts build assets/src/metabox.js --output-path=assets/build\""
   },
   "dependencies": {
     "@wordpress/i18n": "^4.9.0"

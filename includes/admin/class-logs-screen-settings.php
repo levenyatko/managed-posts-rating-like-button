@@ -1,10 +1,15 @@
 <?php
+    namespace MPRating\Admin;
 
-    class MPR_Logs_Screen_Settings
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit; // Exit if accessed directly.
+    }
+
+    class Logs_Screen_Settings
     {
         public static function init_hooks()
         {
-            add_filter( "manage_toplevel_page_mpr-plugin-page_columns", [MPR_Logs_Table::class, 'get_columns_list'] );
+            add_filter( "manage_toplevel_page_mpr-plugin-page_columns", [\MPRating\Admin\ListTables\Log_Table::class, 'get_columns_list'] );
             add_action("load-toplevel_page_mpr-plugin-page", [self::class, 'add_table_options'] );
             add_filter( "set-screen-option", [self::class, 'set_option'], 11, 3 );
         }

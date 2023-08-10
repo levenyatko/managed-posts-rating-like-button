@@ -27,3 +27,72 @@
     transform: rotate(135deg);
     color: #a00;
 }
+
+/**
+* Chart page
+*/
+
+.mpr-chart--wrapper {
+    max-height: 500px;
+    margin: 0 auto;
+}
+
+.mpr-chart__filters {
+    margin: 20px;
+}
+
+.mpr-chart__navigation {
+    display: flex;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #2271b1;
+}
+
+.mpr-chart__navigation > div{
+    flex: 1 1 auto;
+}
+
+.mpr-chart__navigation--current {
+    text-align: center;
+}
+
+.mpr-chart__navigation--next {
+    text-align: right;
+}
+
+.mpr-chart__navigation--prev a::before {
+    content: "<";
+    margin-right: 7px;
+}
+
+.mpr-chart__navigation--next a::after {
+    content: ">";
+    margin-left: 7px;
+}
+
+#mpr-loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: block;
+    margin: 100px auto;
+    position: relative;
+    border: 10px solid;
+    border-color: rgba(104, 156, 199, 0.15) rgba(104, 156, 199, 0.25) rgba(104, 156, 199, 0.35) rgba(104, 156, 199, 0.5);
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+#mpr-loader.error {
+    animation:none;
+    border-color: rgba(250, 0, 0, 0.15) rgba(250, 0, 0, 0.25) rgba(250, 0, 0, 0.35) rgba(250, 0, 0, 0.5);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

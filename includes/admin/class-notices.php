@@ -1,6 +1,11 @@
 <?php
+    namespace MPRating\Admin;
 
-    class MPR_Notices
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit; // Exit if accessed directly.
+    }
+
+    class Notices
     {
         public static function init_hooks()
         {
@@ -19,6 +24,9 @@
                         break;
                     case 'row-delete':
                         $msg = __('Row deletion was failed.');
+                        break;
+                    case 'recalculate':
+                        $msg = __('Error. Please, check if post id is specified.');
                         break;
                     default: break;
                 }

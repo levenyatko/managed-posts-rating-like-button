@@ -43,7 +43,12 @@ function mpr_process_post_voting( $post_id, $add_rating, $parent_id )
         $post_ratings_score = 0;
     }
 
-    MPR_Like_Btn()->logs_data->add_row($post_id, $add_rating, $parent_id );
+    $plugin = MPR_Like_Btn();
+    if ( is_null($plugin->log_data_store) ) {
+        return 0;
+    }
+
+    $plugin->log_data_store->add_row($post_id, $add_rating, $parent_id );
 
     update_post_meta($post_id, 'mpr_score', $post_ratings_score);
 
@@ -88,11 +93,15 @@ function mpr_current_user_voted($post_id)
 
     $allow_to_vote = mpr_get_option( 'like_method', 'mpr_general_section' );
 
+    $log_data_store = MPR_Like_Btn()->log_data_store;
+    if ( is_null($log_data_store) ) {
+        return 0;
+    }
+
     if ( ! empty( $allow_to_vote ) && 'logged' == $allow_to_vote ) {
-        // search user votes by id
-        $voting_count = MPR_Like_Btn()->logs_data->get_post_rating_by_user_id($post_id, $user_ID );
+        $voting_count = $log_data_store->get_post_rating_by($post_id, 'user_id', $user_ID );
     } else {
-        $voting_count = MPR_Like_Btn()->logs_data->get_post_rating_by_user_ip($post_id, mpr_get_ipaddress() );
+        $voting_count = $log_data_store->get_post_rating_by($post_id, 'user_ip', mpr_get_ipaddress() );
     }
 
     return $voting_count;
@@ -257,7 +266,7 @@ function mpr_get_post_rating($post_id, $args = [])
 
     $plugin = MPR_Like_Btn();
 
-    if ( ! isset($plugin->logs_data) ) {
+    if ( ! isset($plugin->log_data_store) ) {
         return $rating;
     }
 
@@ -269,24 +278,23 @@ function mpr_get_post_rating($post_id, $args = [])
     // get post rating on specific date/datetime
     if ( ! empty($args['start']) || ! empty($args['end']) ) {
 
-        $date_start = '';
-        $date_end = '';
+        $date_range = [];
 
         if ( ! empty($args['start'])) {
             $date = new DateTime($args['start']);
             if ( ! empty($date)) {
-                $date_start = $date->format('Y-m-d H:i:s');
+                $date_range['start'] = $date->format('Y-m-d H:i:s');
             }
         }
 
         if ( ! empty($args['end'])) {
             $date = new DateTime($args['end']);
             if ( ! empty($date)) {
-                $date_end = $date->format('Y-m-d H:i:s');
+                $date_range['end'] = $date->format('Y-m-d H:i:s');
             }
         }
 
-        $rating = $plugin->logs_data->get_post_rating($post_id, $date_start, $date_end);
+        $rating = $plugin->log_data_store->get_post_rating_by($post_id, 'date_range', $date_range);
 
     } else {
         $rating = (int)get_post_meta($post_id, 'mpr_score', 1);
