@@ -20,13 +20,13 @@
                 $msg = '';
                 switch ($_GET['mpr-error']) {
                     case 'nonce':
-                        $msg = __('Action failed. Probably your link was timed out. Please, refresh the page and retry.');
+                        $msg = __('Action failed. Probably your link was timed out. Please, refresh the page and retry.', 'mpr-likebtn');
                         break;
                     case 'row-delete':
-                        $msg = __('Row deletion was failed.');
+                        $msg = __('Row deletion was failed.', 'mpr-likebtn');
                         break;
                     case 'recalculate':
-                        $msg = __('Error. Please, check if post id is specified.');
+                        $msg = __('Error. Please, check if post id is specified.', 'mpr-likebtn');
                         break;
                     default: break;
                 }
@@ -47,13 +47,13 @@
                 $msg = '';
                 switch ($_GET['mpr-success']) {
                     case 'row-delete':
-                        $msg = __('Row deleted successfully.');
+                        $msg = __('Row deleted successfully.', 'mpr-likebtn');
                         break;
                     case 'rows-delete':
-                        $msg = __('Rows deleted successfully.');
+                        $msg = __('Rows deleted successfully.', 'mpr-likebtn');
                         break;
                     case 'recalculate':
-                        $msg = __('Post rating updated successfully.');
+                        $msg = __('Post rating updated successfully.', 'mpr-likebtn');
                         break;
                     default: break;
                 }
