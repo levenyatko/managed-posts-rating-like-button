@@ -31,7 +31,7 @@
                                         if ($selected_range == $range) {
                                             $attrs = ' selected';
                                         }
-                                        echo sprintf('<option value="%s"%s>%s</option>', $range, $attrs, esc_html($label));
+                                        echo sprintf('<option value="%s"%s>%s</option>', esc_attr($range), $attrs, esc_html($label));
                                     }
                                 }
                             ?>

@@ -12,7 +12,7 @@
     <hr>
     <div class="mpr-logs-table--wrapper">
         <?php
-            if ( 0 < $filter_post_id ) {
+            if ( isset($filter_post_id) && 0 < $filter_post_id ) {
 
                 $page_title = __(' for: ', 'mpr-likebtn');
                 $page_title .= get_the_title($filter_post_id);

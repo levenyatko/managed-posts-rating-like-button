@@ -17,7 +17,7 @@
         public static function add_table_options()
         {
             add_screen_option('per_page', [
-                'label'   => __('Number of items per page:'),
+                'label'   => __('Number of items per page:', 'mpr-likebtn'),
                 'default' => 10,
                 'option'  => 'mpr_rows_per_page'
             ]);
