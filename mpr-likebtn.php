@@ -9,7 +9,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       mpr-likebtn
  * Domain Path:       /languages
- * Tested up to:      6.2
+ * Tested up to:      6.3
  * Requires PHP:      7.2
  */
 
