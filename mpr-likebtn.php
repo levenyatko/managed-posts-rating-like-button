@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       Managed posts rating ★ Like button
- * Description:       Adds rating to any post type, allows to manage user likes.
- * Version:           1.2.0
+ * Description:       Rating system for your WordPress site with a simple "like" button and advanced admin panel.
+ * Version:           2.0.0
  * Author:            Daria Levchenko
  * Author URI:        https://github.com/levenyatko
  * License:           GPL v2 or later

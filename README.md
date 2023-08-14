@@ -1,74 +1,36 @@
-# Managed posts rating - Like button
+# Managed posts rating ★ Like button
 
-The plugin adds a rating system to your WordPress site.
+Rating system for your WordPress site with a simple "like" button and advanced admin panel.
+
+To install the plugin you could download package from this repository or install plugin as usual from WordPress plugins page.
 
 ## Highlights
 
-* Lightweight
-* Add rating functionality to your website automatically or use shortcodes
-* Page with detailed information about each rating such as time, IP (optionally), username, title etc.
-* Easily change ratings in the admin panel
-* Supports structured data for rich snippets
-* Custom templates for complete customization
+* Lightweight.
+* Integrate the like button automatically or use shortcodes for custom placement.
+* Access a detailed logs page to track user interactions and ratings.
+* The chart page displays users' voting activity.
+* Ability to allow only logged-in users to vote.
+* Ability to customize the maximum number of votes per post from one user.
+* Easy voting management.
+* Ability to rewrite the voting button template in your theme.
 
 ## Usage
 
-* The easiest way to add a rating to page - use the "Before Content" and "After Content" display settings.
-* You can also add a rating using the shortcode `[mpr-button]`
-* If you want to embed other post ratings use `[mpr-button id="1" disabled="false" ]`, where 1 is the ID of the post/page ratings that you want to display.
-* You can show post rating via function `mpr_button(['id' => 1, 'disabled' => false, 'return' => false ])`
+To automatically add the "like" button to your posts in the admin panel
+* Go to the "MPRating" -> "Settings" page
+* Change the "Display" select value to "Before Content" or "After Content"
+* Save settings
 
-## For developers
+For more advanced control, select the "Manually" value for the "Display" select and use the provided shortcodes in your post content or templates:
+* `[mpr-button]` - Display the like button.
+* `[mpr-button id="XX" disabled="false"]` - Display the like button for a specific post (replace "XX" with the post ID). Use the "disabled" attribute if you want to show the "like" button but disallow voting.
 
-### Filters
-
-`mpr_edit_meta_box_screens` - list of screens on which the metabox of manual rating addition will be displayed.
-
-```php
-apply_filters('mpr_edit_meta_box_screens', $screens);
-```
-
-`mpr_log_table_headings` - list of headings for log table
-
-```php
-apply_filters('mpr_log_table_headings', []);
-```
-
-`mpr_log_table_row` - filter data to display in log table
-
-```php
-apply_filters('mpr_log_table_row', $result );
-```
-
-`mpr_column_screens_display` - post types list on which the rating column will be displayed.
-
-```php
-apply_filters('mpr_column_screens_display', $screens);
-```
-
-`mpr_is_user_can_vote` - if you need change current user caps to voting
-
-```php
-apply_filters('mpr_is_user_can_vote', $is_vote_allowed);
-```
-
-`mpr_allowed_settings_cell_tags` - allowed tags to display in the logs table cell.
-
-```php
-$allowed_cell_tags = apply_filters('mpr_allowed_settings_cell_tags', $allowed_cell_tags);
-```
-
-### Actions
-
-`mpr_after_post_voted` - is fired after a new voting record is added to the log
-
-```php
-do_action( 'mpr_after_post_voted', $post_id, $rating_value, $parent_id, $log_row_id );
-```
+You can also display the voting button using the mpr_button function. The function parameters are similar to the shortcode.
+`mpr_button(['id' => 1, 'disabled' => false, 'return' => false ]);`
 
 ## Frequently Asked Questions
 
 ### How to customize rating template?
 
 Create an `mpr` folder in your theme and copy the `partials/front` folder into it.
-

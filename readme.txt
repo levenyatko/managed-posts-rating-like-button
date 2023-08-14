@@ -1,105 +1,111 @@
 === Managed posts rating ★ Like button ===
 Contributors: levenyatko
-Tags: rating, voting, rating system, star rating
+Tags: like button, rating, voting, rating system, rate post
 Requires at least: 4.9
-Tested up to: 6.2
-Stable tag: 1.1.0
+Tested up to: 6.3
+Stable tag: 2.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-The plugin adds a rating system to your WordPress site.
+Rating system for your WordPress site with a simple "like" button and advanced admin panel.
 
 == Description ==
+The Managed posts rating ★ Like button plugin is a rating system for your WordPress site with a simple "like" button and advanced admin panel.
+This lightweight plugin empowers you to enhance user engagement by enabling rating functionality for your posts, pages, or any custom post type. You can automatically integrate the like button or use shortcodes to customize its placement.
 
-The plugin adds a rating system to your WordPress site.
+== Key Features ==
+- Lightweight.
+- Integrate the like button automatically or use shortcodes for custom placement.
+- Access a detailed logs page to track user interactions and ratings.
+- The chart page displays users' voting activity.
+- Ability to allow only logged-in users to vote.
+- Ability to customize the maximum number of votes per post from one user.
+- Easy voting management.
+- Ability to rewrite the voting button template in your theme.
 
-* Lightweight
-* Add rating functionality to your website automatically or use shortcodes
-* Page with detailed information about each rating such as time, IP (optionally), username, title etc.
-* Easily change ratings in the admin panel
-* Supports structured data for rich snippets
-* Custom templates for complete customization
+== Usage ==
+To automatically add the "like" button to your posts in the admin panel
+- Go to the "MPRating" -> "Settings" page
+- Change the "Display" select value to "Before Content" or "After Content"
+- Save settings
 
-=== Usage ===
+For more advanced control, select the "Manually" value for the "Display" select and use the provided shortcodes in your post content or templates:
+- `[mpr-button]` - Display the like button.
+- `[mpr-button id="XX" disabled="false"]` - Display the like button for a specific post (replace "XX" with the post ID). Use the "disabled" attribute if you want to show the "like" button but disallow voting.
 
-* The easiest way to add a rating to page - use the "Before Content" and "After Content" display settings.
-* You can also add a rating using the shortcode `[mpr-button]`
-* If you want to embed other post ratings use `[mpr-button id="1" disabled="false" ]`, where 1 is the ID of the post/page ratings that you want to display.
-* You can show post rating via function `mpr_button(['id' => 1, 'disabled' => false, 'return' => false ])`
+You can also display the voting button using the mpr_button function. The function parameters are similar to the shortcode.
+`mpr_button(['id' => 1, 'disabled' => false, 'return' => false ]);`
+
+== Admin Panel ==
+
+Visit the "MPRating" section in your WordPress admin dashboard to access the admin panel. From here, you can:
+- View and manage user ratings.
+- Customize the plugin settings to match your preferences.
 
 == Installation ==
 
-1. Upload the entire `mpr-likebtn` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to the "MPRating"->"Settings" item on the admin menu
-4. Check the plugin settings and save them.
+**Modern way**
 
-That's it. You're done!
+1. In the admin panel to the Plugins' menu in WordPress.
+2. On the top of the page press the 'Add new' button.
+3. In the search field type 'Managed posts rating', then click 'Search Plugins' or press Enter.
+4. Once you’ve found it, install it by clicking 'Install Now' and WordPress will take it from there.
+5. Activate the plugin after installation.
+6. Go to the "MPRating" -> "Settings" page to configure the plugin.
+
+**Manually**
+
+1. Upload the plugin folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Go to the "MPRating" -> "Settings" page to configure the plugin.
 
 == Frequently Asked Questions ==
 
-= How to customize rating template? =
+= How do I add the like button to my posts? =
+
+The like button can be added automatically. Go to the "MPRating" -> "Settings" page, select the post types in which you want to display the "Like" button, and specify the location where you want to add the button.
+You can also use the provided shortcodes to add the button to specific posts or templates.
+
+= How to customize the rating template? =
 
 Create an `mpr` folder in your theme and copy the `partials/front` folder into it.
+
+= Is the plugin compatible with custom post types? =
+
+Yes, the plugin works with custom post types. Make sure that you enabled support of new CPT on plugin settings page.
+
+= Can I translate the plugin into other languages? =
+
+Yes, the plugin is translation-ready. You can use tools like WPML or Loco Translate to create translations for different languages.
+
+= Does the plugin slow down my website? =
+
+No, the plugin is designed to be lightweight and efficient, ensuring that it doesn't negatively impact your website's performance.
 
 == Screenshots ==
 
 1. MPR Plugin Settings page in default state
-2. New Rating column for posts list table in the admin pannel
-3. Shortcode to show rating star manually and panel to add rating for the post by hands
+2. New Rating column for posts list table in the admin panel
+3. Shortcode to show rating star manually and panel to add a rating for the post by hands
 4. Voting log page for all posts
-5. Voting log filtered by page
-
-== Additional Info ==
-
-=== Filters ===
-
-**mpr_edit_meta_box_screens** - list of screens on which the metabox of manual rating addition will be displayed.
-
-*apply_filters('mpr_edit_meta_box_screens', $screens);*
-
-**mpr_log_table_headings** - list of headings for log table
-
-*apply_filters('mpr_log_table_headings', []);*
-
-**mpr_log_table_row** - filter data to display in log table
-
-*apply_filters('mpr_log_table_row', $result );*
-
-**mpr_column_screens_display** - post types list on which the rating column will be displayed.
-
-*apply_filters('mpr_column_screens_display', $screens);*
-
-**mpr_is_user_can_vote** - if you need change current user caps to voting
-
-*apply_filters('mpr_is_user_can_vote', $is_vote_allowed);*
-
-**mpr_is_user_can_vote_unsupported** - if you need change current user caps to voting for unsupported post types when voting button is displayed active
-
-*apply_filters('mpr_is_user_can_vote_unsupported', $is_vote_allowed);*
-
-**the_mpr_button_shortcode_hidden** - filter to change displayed content for hidden voting button
-
-*apply_filters('the_mpr_button_shortcode_hidden', '');*
-
-**mpr_allowed_settings_cell_tags** - allowed tags to display in the logs table cell.
-
-*$allowed_cell_tags = apply_filters('mpr_allowed_settings_cell_tags', $allowed_cell_tags);*
-
-=== Actions ===
-
-**mpr_after_post_voted** - is fired after a new voting record is added to the log
-
-*do_action( 'mpr_after_post_voted', $post_id, $rating_value, $parent_id, $log_row_id );*
+5. Chart page with statistic graphs
 
 == Changelog ==
 
+= 2.0.0 =
+* Updated Logs page display
+* Added a page with a chart to display voting activity
+* Fixed rating block display on WooCommerce pages
+* Added the 'mpr_get_post_rating' function to retrieve post total rating or rating for the specified time period
+* Updated Tested up to WP version
+* Updated Readme files
+
 = 1.2.0 =
-* Added display settings for voting button on unsupported post types
-* Added mpr_is_user_can_vote_unsupported filter to change if user can vote for post with unsupported post type.
-* Added the_mpr_button_shortcode_hidden filter to show notification for disabled shortcode.
-* Compatibility with WordPress 6.2.
+* Added display settings for the "like" button on unsupported post types
+* Added mpr_is_user_can_vote_unsupported filter to change if a user can vote for the post unsupported post type.
+* Added the_mpr_button_shortcode_hidden filter to show notification shortcode when display disabled.
+* Added Compatibility with WordPress 6.3.
 
 = 1.1.0 =
 * Added escaping for echoed variables
