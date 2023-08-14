@@ -6,175 +6,270 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Package Name\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 12:15+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2023-08-14 08:31+0200\n"
+"PO-Revision-Date: 2023-08-14 08:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Eazy Po 0.9.5.3\n"
 
-msgid "Rating"
-msgstr ""
-
-msgid "View Log"
-msgstr ""
-
-msgid "Manually"
-msgstr ""
-
-msgid "Rating Log"
-msgstr ""
-
-msgid "MPRating"
-msgstr ""
-
-msgid "Access Denied"
-msgstr ""
-
-msgid "ID"
-msgstr ""
-
-msgid "Post"
-msgstr ""
-
-msgid "Page From"
-msgstr ""
-
-msgid "User Name"
-msgstr ""
-
-msgid "User IP (hash)"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
-msgid "Voting"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "No data"
-msgstr ""
-
-msgid "Filter"
-msgstr ""
-
-msgid "Delete"
-msgstr ""
-
-#, php-format
-msgid "Rating: %s"
-msgstr ""
-
-msgid "Enter the number of likes you wish to add"
-msgstr ""
-
-msgid "and update the post"
-msgstr ""
-
-msgid "You can enter negative number to decrease post rating."
-msgstr ""
-
+#: includes/class-rest-api.php:124 includes/class-rest-api.php:160
 msgid "Thank you, vote accepted!"
 msgstr ""
 
+#: includes/class-rest-api.php:129
 msgid "You have left the max. number of votes"
 msgstr ""
 
+#: includes/class-rest-api.php:133 includes/class-rest-api.php:163
 #, php-format
 msgid "Invalid Post ID (#%s)."
 msgstr ""
 
+#: includes/class-rest-api.php:137
 msgid "You can't vote for this entry"
 msgstr ""
 
+#: includes/class-rest-api.php:167
 msgid "You cannot vote for this entry"
 msgstr ""
 
+#: includes/class-rest-api.php:218
+msgid "You are not allowed to see the data."
+msgstr ""
+
+#: includes/admin/class-logs-screen-settings.php:20
+msgid "Number of items per page:"
+msgstr ""
+
+#: includes/admin/class-metabox.php:63
+#: includes/admin/pages/class-base-page.php:25
+msgid "MPRating"
+msgstr ""
+
+#: includes/admin/class-metabox.php:86
+#, php-format
+msgid "Rating: %s"
+msgstr ""
+
+#: includes/admin/class-metabox.php:89
+msgid "Enter the number of likes you wish to add"
+msgstr ""
+
+#: includes/admin/class-metabox.php:91
+msgid "and update the post"
+msgstr ""
+
+#: includes/admin/class-metabox.php:92
+msgid "You can enter negative number to decrease post rating."
+msgstr ""
+
+#: includes/admin/class-metabox.php:94
+#: includes/admin/class-post-columns.php:59
+msgid "View Log"
+msgstr ""
+
+#: includes/admin/class-notices.php:23
+msgid ""
+"Action failed. Probably your link was timed out. Please, refresh the page "
+"and retry."
+msgstr ""
+
+#: includes/admin/class-notices.php:26
+msgid "Row deletion was failed."
+msgstr ""
+
+#: includes/admin/class-notices.php:29
+msgid "Error. Please, check if post id is specified."
+msgstr ""
+
+#: includes/admin/class-notices.php:50
+msgid "Row deleted successfully."
+msgstr ""
+
+#: includes/admin/class-notices.php:53
+msgid "Rows deleted successfully."
+msgstr ""
+
+#: includes/admin/class-notices.php:56
+msgid "Post rating updated successfully."
+msgstr ""
+
+#: includes/admin/class-post-columns.php:40
+#: includes/admin/listtables/class-log-table.php:30
+msgid "Rating"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:28
+msgid "ID"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:29
+msgid "Post"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:31
+msgid "Page From"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:32
+msgid "User"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:33
+msgid "Date"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:74
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:75
+msgid "Filter"
+msgstr ""
+
+#: includes/admin/listtables/class-log-table.php:168
+msgid "No data"
+msgstr ""
+
+#: includes/admin/pages/class-base-page.php:24
+#: includes/admin/pages/class-log-page.php:40
+msgid "Rating Log"
+msgstr ""
+
+#: includes/admin/pages/class-chart-page.php:48
+msgid "Statistic Chart"
+msgstr ""
+
+#: includes/admin/pages/class-chart-page.php:49
+msgid "Statistic"
+msgstr ""
+
+#: includes/admin/pages/class-chart-page.php:170
+#: includes/admin/pages/class-log-page.php:52
+#: includes/admin/pages/class-settings.php:46
+msgid "Access Denied"
+msgstr ""
+
+#: includes/admin/pages/class-log-page.php:41
+msgid "Logs"
+msgstr ""
+
+#: includes/admin/pages/class-settings.php:34
 msgid "MPR Plugin Settings"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:35
 msgid "Settings"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:88
 msgid "Enable for:"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:98
 msgid "Allow to vote:"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:102
 msgid "All users by IP"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:103
 msgid "Logged only"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:109
 msgid "Max. number of votes:"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:110
 msgid "Allowed voting count from non-logged or non-admin role user"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:116
 msgid "Display:"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:117
 msgid ""
 "To display the rating manually you can use [mpr-button] shortcode or "
 "mpr_button(['id' => 0, 'disabled' => false, 'return' => true ]) function"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:120
 msgid "Before Content"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:121
 msgid "After Content"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:122
+#: includes/data/class-logs-data-store.php:111
+msgid "Manually"
+msgstr ""
+
+#: includes/admin/pages/class-settings.php:128
 msgid "Display if disabled:"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:129
 msgid ""
 "Do we need to show voting button for disabled post types (for manually added "
 "buttons only)?"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:132
 msgid "Hide"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:133
 msgid "Show disabled"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:134
 msgid "Show"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:140
 msgid "Clear all"
 msgstr ""
 
+#: includes/admin/pages/class-settings.php:141
 msgid "Clear all settings and log when uninstalling plugin"
 msgstr ""
 
+#: includes/data/class-statistic-data.php:9
+msgid "Year"
+msgstr ""
+
+#: includes/data/class-statistic-data.php:10
+msgid "Month"
+msgstr ""
+
+#: partials/admin/logs-chart.php:25
+msgid "Period to show data:"
+msgstr ""
+
+#: partials/admin/logs-table.php:17
 msgid " for: "
 msgstr ""
 
-msgid "Update calculated rating"
-msgstr ""
-
+#: partials/admin/logs-table.php:28
 msgid "Post total rating:"
 msgstr ""
 
-msgid "Back to Log for all posts"
+#: partials/admin/logs-table.php:31
+msgid "Update calculated rating"
 msgstr ""
 
-msgid "No data to display"
-msgstr ""
-
-msgid "&laquo;"
-msgstr ""
-
-msgid "&raquo;"
+#: partials/admin/logs-table.php:36
+msgid "Show Log for all posts"
 msgstr ""
