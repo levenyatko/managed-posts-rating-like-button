@@ -9,13 +9,13 @@
 
     class Chart_Page extends Base_Page
     {
-        private string $range;
+        private $range;
 
-        private string $period;
+        private $period;
 
-        private string $display_format;
+        private $display_format;
 
-        private string $value_format;
+        private $value_format;
 
         public function __construct()
         {

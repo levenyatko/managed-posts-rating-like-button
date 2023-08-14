@@ -6,9 +6,9 @@
 
     abstract class Statistic_Query
     {
-        protected string $selected_period;
+        protected $selected_period;
 
-        protected array $date_ranges;
+        protected $date_ranges;
 
         public function __construct($selected_period = '')
         {
