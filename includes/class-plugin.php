@@ -88,6 +88,10 @@
                 $this->log_data_store->delete_table();
 
                 delete_option("mpr_general_section");
+
+                $role = get_role( 'administrator' );
+                $role->remove_cap( 'manage_mpr_log' );
+                $role->remove_cap( 'mpr_freely_likes' );
             }
 
         }
