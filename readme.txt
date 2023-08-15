@@ -85,11 +85,12 @@ No, the plugin is designed to be lightweight and efficient, ensuring that it doe
 
 == Screenshots ==
 
-1. MPR Plugin Settings page in default state
+1. MPR Plugin Settings page
 2. New Rating column for posts list table in the admin panel
 3. Shortcode to show rating star manually and panel to add a rating for the post by hands
-4. Voting log page for all posts
-5. Chart page with statistic graphs
+4. Log page
+5. Chart page
+6. "Like" button after user voted
 
 == Changelog ==
 
@@ -105,7 +106,7 @@ No, the plugin is designed to be lightweight and efficient, ensuring that it doe
 * Added display settings for the "like" button on unsupported post types
 * Added mpr_is_user_can_vote_unsupported filter to change if a user can vote for the post unsupported post type.
 * Added the_mpr_button_shortcode_hidden filter to show notification shortcode when display disabled.
-* Added Compatibility with WordPress 6.3.
+* Added Compatibility with WordPress 6.2.
 
 = 1.1.0 =
 * Added escaping for echoed variables
