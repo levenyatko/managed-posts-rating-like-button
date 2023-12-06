@@ -5,7 +5,7 @@
 
     class Statistic_Query_Year extends Statistic_Query
     {
-        private static int $date_len = 7;
+        private static $date_len = 7;
 
         public function __construct($selected_period = '')
         {
