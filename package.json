@@ -8,9 +8,9 @@
     "build": "wp-scripts build assets/src/metabox.js --output-path=assets/build\""
   },
   "dependencies": {
-    "@wordpress/i18n": "^4.9.0"
+    "@wordpress/i18n": "^6.9.0"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^26.18.0"
+    "@wordpress/scripts": "^31.1.0"
   }
 }
