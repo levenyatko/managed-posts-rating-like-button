@@ -2,9 +2,9 @@
 Contributors: levenyatko
 Tags: like button, rating, voting, rating system, rate post
 Requires at least: 4.9
-Tested up to: 6.4.1
-Stable tag: 2.0.1
-Requires PHP: 7.4
+Tested up to: 6.9
+Stable tag: 2.0.2
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,10 @@ No, the plugin is designed to be lightweight and efficient, ensuring that it doe
 6. "Like" button after user voted
 
 == Changelog ==
+
+= 2.0.2 =
+* Updated npm packages
+* Tested up to WP 6.9 version
 
 = 2.0.1 =
 * Updated npm packages

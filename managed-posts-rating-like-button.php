@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Managed posts rating ★ Like button
  * Description:       Rating system for your WordPress site with a simple "like" button and advanced admin panel.
- * Version:           2.1.0
+ * Version:           2.0.2
  * Author:            Daria Levchenko
  * Author URI:        https://github.com/levenyatko
  * License:           GPL v2 or later
@@ -10,7 +10,7 @@
  * Text Domain:       mpr-likebtn
  * Domain Path:       /languages
  * Tested up to:      6.9
- * Requires PHP:      .2
+ * Requires PHP:      8.2
  */
 
     if ( ! defined( 'ABSPATH' ) ) {
